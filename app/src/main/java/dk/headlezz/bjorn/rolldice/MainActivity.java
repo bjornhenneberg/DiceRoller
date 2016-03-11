@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
     ImageView diceImage;
     ImageView diceImage2;
 
-
+    int eyeamountnr1;
+    int eyeamountnr2;
+    String timestampAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,62 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        if (savedInstanceState != null){
+            timestampAll = savedInstanceState.getString("1");
+            eyeamountnr1 = savedInstanceState.getInt("2");
+            eyeamountnr2 = savedInstanceState.getInt("3");
+
+
+            lblDiceRoll.setText(""+eyeamountnr1);
+            lblDiceRoll2.setText(""+eyeamountnr2);
+            lblTimestamp.setText(timestampAll);
+
+            if(eyeamountnr1 == 1) {
+                diceImage.setImageResource(R.drawable.dice1);
+            }
+            if(eyeamountnr1 == 2) {
+                diceImage.setImageResource(R.drawable.dice2);
+            }
+            if(eyeamountnr1 == 3) {
+                diceImage.setImageResource(R.drawable.dice3);
+            }
+            if(eyeamountnr1 == 4) {
+                diceImage.setImageResource(R.drawable.dice4);
+            }
+            if(eyeamountnr1 == 5) {
+                diceImage.setImageResource(R.drawable.dice5);
+            }
+            if(eyeamountnr1 == 6) {
+                diceImage.setImageResource(R.drawable.dice6);
+            }
+
+            if(eyeamountnr2 == 1) {
+                diceImage2.setImageResource(R.drawable.dice1);
+            }
+            if(eyeamountnr2 == 2) {
+                diceImage2.setImageResource(R.drawable.dice2);
+            }
+            if(eyeamountnr2 == 3) {
+                diceImage2.setImageResource(R.drawable.dice3);
+            }
+            if(eyeamountnr2 == 4) {
+                diceImage2.setImageResource(R.drawable.dice4);
+            }
+            if(eyeamountnr2 == 5) {
+                diceImage2.setImageResource(R.drawable.dice5);
+            }
+            if(eyeamountnr2 == 6) {
+                diceImage2.setImageResource(R.drawable.dice6);
+            }
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("1",timestampAll);
+        outState.putInt("2",eyeamountnr1);
+        outState.putInt("3",eyeamountnr2);
     }
 
     private void historyBtnPress() {
@@ -137,5 +195,9 @@ public class MainActivity extends AppCompatActivity {
         if(eyeamount2 == 6) {
             diceImage2.setImageResource(R.drawable.dice6);
         }
+
+        eyeamountnr1 = eyeamount;
+        eyeamountnr2 = eyeamount2;
+        timestampAll = timestamp;
     }
 }
